@@ -1,0 +1,6 @@
+../Src/main.c:23:5:main	1
+../Src/main.c:67:6:SPI_Set	1
+../Src/main.c:84:6:w_data_SPI	6
+../Src/main.c:109:10:r_data_SPI	6
+../Src/main.c:137:7:uninterrupt_r_data_SPI	7
+../Src/main.c:165:6:dummy_delay	2

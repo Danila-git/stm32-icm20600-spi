@@ -8,19 +8,20 @@ void dummy_delay(uint32_t duration);
 void SPI_Set(void);
 void w_data_SPI(uint8_t address,uint8_t data);
 uint8_t r_data_SPI(uint8_t address);
-double accel_x_data;
-double accel_y_data;
-double accel_z_data;
-double gyro_x_data;
-double gyro_y_data;
-double gyro_z_data;
+float accel_x_data;
+float accel_y_data;
+float accel_z_data;
+float gyro_x_data;
+float gyro_y_data;
+float gyro_z_data;
 uint8_t storage[14];
-double accel_sensitivity[4] = {16384,8192,4096,2048};
-double gyro_sensitivity[4] = {131,65.5,32.8,16.4};
+float accel_sensitivity[4] = {16384,8192,4096,2048};
+float gyro_sensitivity[4] = {131,65.5,32.8,16.4};
 volatile uint8_t who_am_i;
 
 
 int main(void){
+    SCB->CPACR |= 0x3 << 20;
 
 RCC->APB2ENR |=	RCC_APB2ENR_SPI1EN;//включение тактирования SPI
 RCC->AHB2ENR |= RCC_AHB2ENR_GPIOAEN;//включение тактирования порта A
@@ -54,12 +55,12 @@ while(1)
 {
 	        uninterrupt_r_data_SPI(0x3B);//функция для непрерывного считывания данных в 14 регистрах
          //вычисляю из исходных значений по формуле значения ускорения по осям и угловые скорости
-		    accel_x_data = (double)(int16_t)((storage[0] << 8) | storage[1])/accel_sensitivity[ACCEL_SCALE];
-		    accel_y_data = (double)(int16_t)((storage[2] << 8) | storage[3])/accel_sensitivity[ACCEL_SCALE];
-		    accel_z_data = (double)(int16_t)((storage[4] << 8) | storage[5])/accel_sensitivity[ACCEL_SCALE];
-			gyro_x_data = (double)(int16_t)((storage[8] << 8) | storage[9])/gyro_sensitivity[GYRO_SCALE];
-			gyro_y_data = (double)(int16_t)((storage[10] << 8) | storage[11])/gyro_sensitivity[GYRO_SCALE];
-			gyro_z_data = (double)(int16_t)((storage[12] << 8) | storage[13])/gyro_sensitivity[GYRO_SCALE];
+		    accel_x_data = (float)(int16_t)((storage[0] << 8) | storage[1])/accel_sensitivity[ACCEL_SCALE];
+		    accel_y_data = (float)(int16_t)((storage[2] << 8) | storage[3])/accel_sensitivity[ACCEL_SCALE];
+		    accel_z_data = (float)(int16_t)((storage[4] << 8) | storage[5])/accel_sensitivity[ACCEL_SCALE];
+			gyro_x_data = (float)(int16_t)((storage[8] << 8) | storage[9])/gyro_sensitivity[GYRO_SCALE];
+			gyro_y_data = (float)(int16_t)((storage[10] << 8) | storage[11])/gyro_sensitivity[GYRO_SCALE];
+			gyro_z_data = (float)(int16_t)((storage[12] << 8) | storage[13])/gyro_sensitivity[GYRO_SCALE];
 }
 }
 

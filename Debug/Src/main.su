@@ -1,6 +1,9 @@
-../Src/main.c:23:5:main	8	static
-../Src/main.c:67:6:SPI_Set	4	static
-../Src/main.c:84:6:w_data_SPI	24	static
-../Src/main.c:109:10:r_data_SPI	24	static
-../Src/main.c:137:7:uninterrupt_r_data_SPI	24	static
-../Src/main.c:165:6:dummy_delay	24	static
+../Src/main.c:22:5:main	8	static
+../Src/main.c:65:6:spi_set	4	static
+../Src/main.c:76:6:rewrite_data_spi	16	static
+../Src/main.c:87:6:add_data_spi	24	static
+../Src/main.c:100:9:r_data_spi	24	static
+../Src/main.c:115:6:uninterrupt_r_data_spi	24	static
+../Src/main.c:130:6:uninterrupt_w_data_spi	32	static
+../Src/main.c:143:9:send_recieve_byte_of_data	24	static
+../Src/main.c:157:6:dummy_delay	24	static

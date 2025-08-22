@@ -1,2 +1,1 @@
-# stm32-icm20600-spi
-
+# ICM-20600 SPI Driver for STM32
